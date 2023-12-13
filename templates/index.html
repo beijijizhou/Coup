@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to the Coup Game {% endblock %}</h1>
+    <p>Game Status: {{ game_status }}</p>
+    <form action="/update_status" method="post">
+        <input type="submit" value="Start the Game">
+    </form>
+    
+    {% if game_status == "started" %}
+    {% include 'game_component.html' %}
+
+    {% endif %}
+   
+{% endblock %}

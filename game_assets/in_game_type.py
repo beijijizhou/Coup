@@ -8,6 +8,7 @@ class ActionType(Enum):
     CHALLENGE = 5
     COUNTERACT = 6
     NOTIFY = 7
+    PENDING_ACTION = 8
 
 class TargetType(Enum):
     GAME_MANAGER = 1

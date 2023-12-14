@@ -54,13 +54,13 @@ h2 {
 .character-action {
     display: flex;
     align-items: center;
-  }
+}
 
-  .character-action h3 {
+.character-action h3 {
     margin: 0; /* Remove default margin */
-    padding: 5px; /* Add padding for spacing */
-  }
+    /* Add padding for spacing */
+}
   
-  .character-action form {
+.character-action form {
     margin-left: 10px; /* Add margin for spacing between h3 and form */
-  }
+}

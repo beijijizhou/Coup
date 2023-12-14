@@ -12,24 +12,6 @@ class Player():
         self.name = record['name']
         self.index = record['index']
         
-
-    def _start_turn(self):
-        # message = self.name + " is playing the turn"
-        self._show_all_actions()
-        
-   
-
-    def _show_all_actions(self):
-        self._show_general_actions()
-        self._show_character_actions()
-        pass
-
-    def _show_character_actions(self):
-        pass
-
-    def _show_general_actions(self):
-        pass
-
     def _counter_or_challenge():
         pass
     def _counter(self):
@@ -40,11 +22,5 @@ class Player():
     def get_characters(self):
         return self._characters
 
-    def handle_event(self, data: TurnData):
-        if(self.index == data.index):
-            match data.action_type:
-                case ActionType.START_TURN:
-                    self._start_turn()
-
-
-        pass
+    def handle_event(self, data):
+         pass

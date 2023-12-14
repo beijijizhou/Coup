@@ -10,7 +10,6 @@ ai_number = 4
 @app.route('/')
 def index():
     game_manager = GameManager(ai_number + 1)
-
     return render_template('index.html', game_status=game_status,
                             ai_number = ai_number, game_manager=game_manager)
 

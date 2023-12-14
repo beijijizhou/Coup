@@ -3,7 +3,7 @@
 # character_classes = {
 #     "Duke": Duke,
 # }
-class Character:
+class Character():
     character_candiates = ["Contessa","Duke", "Captain", "Ambassador", "Assassin"]
     character_color = ["red", "purple", "blue","green","black"]
     character_instances = {}
@@ -11,8 +11,7 @@ class Character:
        
         self._name = self.character_candiates[index]
         self._color = self.character_color[index]
-        # print(self._color)
-        # print(self._name)
+       
 
         # character_class = character_classes.get(self.name)
         # if character_class:

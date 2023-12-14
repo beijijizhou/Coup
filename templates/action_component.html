@@ -1,0 +1,21 @@
+<div>
+    <h1> Charater Action </h1>
+        {% for key, value in game_manager.action_display.character_action_details.items() %}
+        <div class="character-action">
+            <h3>{{key}}</h3>
+            <form action="/select_character_action" method="post">
+              <button type="submit" name="action" value="{{key}}">
+                Select
+              </button>
+            </form>
+          </div>
+            <p> {{value}} </p>
+        {% endfor %}
+</div>
+
+<div>
+    <!-- {% for key, value in game_manager.action_display.character_action_details.items() %}
+        <h1> {{key}} </h1>
+        <p> {{value}} </p>
+    {% endfor %} -->
+</div>

@@ -5,4 +5,4 @@ class Duke(Character):
         self._color = "purple"
     
     def action():
-        print("duke action")
+        pass

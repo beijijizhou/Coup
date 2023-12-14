@@ -2,9 +2,10 @@ from .character import Character
 from typing import List
 class Player():
     _characters: List[Character] = [] * 2
-    coins = 2
-    def __init__(self, characters:List[Character]):
+    _coins = 2
+    def __init__(self, characters:List[Character], name: str):
         self._characters = characters
+        self.name = name
 
     def _start_turn(self):
         self._show_all_actions()
@@ -29,3 +30,5 @@ class Player():
 
     def _challenge(self):
         pass
+    def get_characters(self):
+        return self._characters

@@ -1,3 +1,27 @@
+<div class="container">
+    <!-- {% for ai in range(game_manager._current_player_number) %}
+    
+     <h1>{{ai}}</h1>
+        
+    {% endfor %} -->
 
-<a> {{ ai_number }}</a>
-<h1>haha</h1>
+    {% for player in game_manager.get_players() %}
+    <div class="player">
+        <div>
+            <h1> {{player.name}}</h1>
+        </div>
+        <div>
+            {% for character in player.get_characters() %}
+
+            <!-- <h6>{{character._color}}</h6> -->
+            <h2   style="background-color:{{character._color}}">{{character._name}}</h2>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+    {% endfor %}
+</div>

@@ -1,0 +1,29 @@
+.container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+.ai-player {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    background-color: lightblue;
+}
+.player{
+    display: grid; 
+    grid-template-columns:  70% 30%; 
+}
+h2 {
+    /* background-color: {{ character._color }}; */
+    color: white; /* Set text color to white */
+    padding: 10px; /* Add padding for better visibility */
+    text-align: center; /* Center-align text */
+    width: fit-content; /* Adjust width to fit content */
+    margin: auto; /* Center horizontally */
+    border: 2px solid white; 
+}

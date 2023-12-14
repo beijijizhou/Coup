@@ -1,4 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
+import math
+
 from  game_assets.game_manager import GameManager
 app = Flask(__name__)
 game_status = "started"
@@ -9,7 +11,8 @@ ai_number = 4
 def index():
     game_manager = GameManager(ai_number + 1)
 
-    return render_template('index.html', game_status=game_status, ai_number = ai_number)
+    return render_template('index.html', game_status=game_status,
+                            ai_number = ai_number, game_manager=game_manager)
 
 @app.route('/update_status', methods=['POST'])
 def update_status():

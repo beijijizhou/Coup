@@ -1,3 +1,8 @@
-class Duke():
+from ..character import Character
+class Duke(Character):
     def __init__(self):
-        print("haha")
+        
+        self._color = "purple"
+    
+    def action():
+        print("duke action")

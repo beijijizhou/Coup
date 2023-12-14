@@ -1,20 +1,26 @@
 from flask import Flask, render_template, redirect, url_for, request
-
+from  game_assets.game_manager import GameManager
 app = Flask(__name__)
-game_status = "pending"
-ai_number = 1
-print(game_status )
+game_status = "started"
+ai_number = 4
+
 
 @app.route('/')
 def index():
-    
+    game_manager = GameManager(ai_number + 1)
+
     return render_template('index.html', game_status=game_status, ai_number = ai_number)
 
 @app.route('/update_status', methods=['POST'])
 def update_status():
-    global game_status
+    global game_status, ai_number
     # Change the game status here
-    game_status = "started" if game_status == "pending" else "pending"
+    if game_status == "pending":
+        game_status = "started" 
+        game_manager = GameManager(ai_number + 1)
+
+    else:
+        game_status = "pending"
     print(game_status)
     return redirect(url_for('index')) 
 

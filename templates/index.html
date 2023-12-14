@@ -13,7 +13,9 @@
         <input type="submit" value="Start the Game">
     </form>
     {% if game_status == "started" %}
-    {% include 'game_component.html' %}
+    {% set ai_number = ai_number %}
+
+    {% include 'game_component.html'  %}
 
     {% endif %}
    

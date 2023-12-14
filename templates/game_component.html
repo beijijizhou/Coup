@@ -4,24 +4,29 @@
      <h1>{{ai}}</h1>
         
     {% endfor %} -->
-
-    {% for player in game_manager.get_players() %}
-    <div class="player">
-        <div>
-            <h1> {{player.name}}</h1>
+    <div class="game">
+        {% for player in game_manager.get_players() %}
+        <div class="gameboard">
+            <div class="playerstats">
+                <div> {{player.name}}</div>
+                <div class="circle">{{player.coins}}</div>
+            </div>
+            <div>
+                {% for character in player.get_characters() %}
+    
+                <!-- <h6>{{character._color}}</h6> -->
+                <h2 style="background-color:{{character._color}}">{{character._name}}</h2>
+    
+                {% endfor %}
+            </div>
         </div>
-        <div>
-            {% for character in player.get_characters() %}
-
-            <!-- <h6>{{character._color}}</h6> -->
-            <h2   style="background-color:{{character._color}}">{{character._name}}</h2>
-
-            {% endfor %}
-        </div>
-
+        {% endfor %}
     </div>
-
-
-
-    {% endfor %}
+    <div class="gameboard">
+        <h1> Player Choice</h1>
+    </div>
+    <div class="gameboard">
+        <h1> Game Board</h1>
+    </div>
+    
 </div>

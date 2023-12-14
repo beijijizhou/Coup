@@ -24,7 +24,6 @@ def update_status():
 
     else:
         game_status = "pending"
-    print(game_status)
     return redirect(url_for('index')) 
 
 @app.route('/update_ai', methods=['POST'])

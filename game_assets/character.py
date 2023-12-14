@@ -11,10 +11,9 @@ class Character:
        
         self._name = self.character_candiates[index]
         self._color = self.character_color[index]
-        print(self._color)
-        print(self._name)
-        # print(index)
-        # print(self.name)
+        # print(self._color)
+        # print(self._name)
+
         # character_class = character_classes.get(self.name)
         # if character_class:
         #         self.character_instances[self.name] = character_class(self.name)

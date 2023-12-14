@@ -1,9 +1,11 @@
-.container {
-    width: 400px;
-    height: 400px;
+.game {
+  
     position: relative;
 }
-
+.container{
+    display: grid; 
+    grid-template-columns:  40% 30% 30%; 
+}
 .ai-player {
     width: 50px;
     height: 50px;
@@ -26,4 +28,25 @@ h2 {
     width: fit-content; /* Adjust width to fit content */
     margin: auto; /* Center horizontally */
     border: 2px solid white; 
+}
+.gameboard{
+    border: 2px solid black; 
+
+}
+
+.circle {
+    width: 50px; /* Set width and height to create a circle */
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%; /* Make the div round (circle) */
+    background-color: lightgray; /* Background color of the circle */
+    text-align: center; /* Center-align text horizontally */
+    /* Center-align text vertically */
+    color: gray; /* Set text color to gray */
+    margin-right: 20px;
+}
+
+.playerstats{
+    display: grid; 
+    grid-template-columns:  50% 50%; 
 }

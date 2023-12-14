@@ -2,7 +2,7 @@ from .player import Player
 from .character import Character
 from typing import List
 import random
-
+from .event_queue import EventQueue
 
 class GameManager:
     in_game = True
@@ -12,20 +12,28 @@ class GameManager:
 
     _allowed_player_number = 6
     _current_player_number = 0
-
+    current_player_index = 0
+    event_queue = None
     def __init__(self, number):
         self._cards_pool = [0] * self._CARDS_NUMBER
         self._players = [None] * number
         self._current_player_number = number
         self._init_cards_pool()
-        self._generate_character_for_all_players()
+        self.event_queue = EventQueue()
 
+        self._generate_character_for_all_players()
+        # print(self.event_queue.subscribers)
     def run_game(self):
         pass
 
-    def process_turn(self):
-        if self.game_started:
-            pass
+    def process_turn(self,index):
+        data = {
+            'action_type' : 'start',
+            index : index,
+        }
+        self.event_queue.notify(data)
+       
+        # recei
 
     def _generate_character_for_all_players(self):
         for i in range(self._current_player_number):
@@ -33,9 +41,14 @@ class GameManager:
             for j in range(2):
                 # characters.append(Character(self._generate_index()))
                 characters.append(Character(i))
-            player_name = "player" if i == 0 else f"AI    {i}"
-
-            self._players[i] = Player(characters, player_name)
+            name= "player" if i == 0 else f"AI    {i}"
+            record = {
+                'name': name,
+                'index' : i
+            }
+            self._players[i] = Player(characters, record)
+        # print(self.event_queue.subscribe)
+        self.event_queue.subscribe(self._players[i])
 
     def _generate_index(self):
         index = random.randint(0, 4)

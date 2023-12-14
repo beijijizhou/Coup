@@ -2,10 +2,12 @@ from .character import Character
 from typing import List
 class Player():
     _characters: List[Character] = [] * 2
-    _coins = 2
-    def __init__(self, characters:List[Character], name: str):
+    coins = 2
+    def __init__(self, characters:List[Character], record):
         self._characters = characters
-        self.name = name
+        print(record)
+        self.name = record['name']
+        self.index = record['index']
 
     def _start_turn(self):
         self._show_all_actions()
@@ -32,3 +34,6 @@ class Player():
         pass
     def get_characters(self):
         return self._characters
+
+    def handle_event(self, data):
+        pass

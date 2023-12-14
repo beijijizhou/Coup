@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
-import math
-
-from  game_assets.game_manager import GameManager
+from game_assets.in_game_type import TargetType, CharacterType
+import random
+from game_assets.game_manager import GameManager
 app = Flask(__name__)
 game_status = "started"
 ai_number = 4
@@ -43,13 +43,20 @@ def update_ai():
 @app.route('/', methods=['POST'])
 def select_character_action():
     global game_manager
-    
     if request.method == 'POST':
         action_type = request.form.get('action_type')
-        print(action_type)
-        if action_type:
-            game_manager.player_selected_action(action_type)
+        if action_type in TargetType.AI.name:
+            action_type = select_ai_action_type()
+        game_manager.player_selected_action(action_type)
+        
     return render_template('index.html', game_status=game_status,
                             ai_number = ai_number, game_manager=game_manager)
+
+
+def select_ai_action_type():
+    target_names = [member.name for member in CharacterType]
+    return random.choice(target_names)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

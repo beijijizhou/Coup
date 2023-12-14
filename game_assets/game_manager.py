@@ -18,14 +18,13 @@ class GameManager():
 
     event_queue = None
     message = ""
-    action_choices = ["",]
+    
 
     def __init__(self, number):
         self._cards_pool = [0] * self._CARDS_NUMBER
         self._players = [None] * number
         self._current_player_number = number
         self._init_cards_pool()
-
         self.event_queue = EventQueue()
         self.action_display = ActionDisplay()
         
@@ -76,12 +75,15 @@ class GameManager():
     def get_players(self):
         return self._players
    
-    def display_message(self):
-        pass
+
     def player_selected_action(self, player_action_type):
-       
         self.event_queue.notify(ActionData(ActionType.PENDING_ACTION, player_action_type,
         self.current_player_index, self.current_player_name))
+        self.end_turn()
+    
+    def end_turn(self):
+        self.current_player_index += 1
+        self.process_turn()
        
     def handle_event(self, data: TurnData):
         pass

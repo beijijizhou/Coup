@@ -23,4 +23,8 @@ class Player():
         return self._characters
 
     def handle_event(self, data):
-         pass
+        # match data.message_action_type:
+        #     case ActionType.PENDING_ACTION:
+        #         if(self.index != data.index):
+        pass
+        

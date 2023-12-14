@@ -1,0 +1,21 @@
+<h1 id="contentDiv">
+    
+</h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    {% if game_manager.current_player_index > 0 %}
+        function sendAIActionToServer(actionType) {
+            $.ajax({
+                type: 'POST',
+                url: '/',
+                data: { "action_type": actionType },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        sendAIActionToServer('AI'); // Replace 'DUKE' with the actual AI action type
+    {% endif %}
+</script>

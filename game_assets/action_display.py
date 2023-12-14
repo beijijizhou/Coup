@@ -4,15 +4,15 @@ from .turn_data import TurnData
 
 class ActionDisplay():
     message = ""
-
+  
     def __init__(self):
         self.character_action_details = {}
         self._show_all_actions()
-
+        self.shown = True
     def _show_all_actions(self):
         self._show_general_actions()
         self._show_character_actions()
-
+        
     def _show_character_actions(self):
         for character in CharacterType:
             self.character_action_details[character.name] = character.value
@@ -20,9 +20,11 @@ class ActionDisplay():
 
     def _show_general_actions(self):
         pass
-
+    def set_shown(self):
+        if self.shown:
+            self.shown = False
     def handle_event(self, data):
-
+        self.shown = data.name[0] == 'P'
         if isinstance(data, TurnData):
             match data.action_type:
                 case ActionType.START_TURN:

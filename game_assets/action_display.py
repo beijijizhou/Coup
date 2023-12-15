@@ -26,6 +26,8 @@ class ActionDisplay():
     def handle_event(self, data):
         # self.shown = data.name[0] == 'P'
         pass
+    def handle_boardcast_action_event(self,data):
+        pass
         # current_player = 
         # if isinstance(data, TurnData):
         #     match data.action_type:

@@ -57,7 +57,7 @@ def select_character_action():
             return jsonify(updated_message=game_manager.action_display.message)
         else:
             player_action_type = request.form.get('player_action_type')
-            print( player_action_type)
+
             game_manager.player_selected_action(player_action_type, TargetType.PLAYER)
     return game_templates()
 

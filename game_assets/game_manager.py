@@ -6,7 +6,7 @@ from .event_queue import EventQueue
 from .in_game_type import ActionType, CharacterType
 from . import in_game_type
 from .action_board_manager import ActionBoardManager
-from .turn_data import TurnData, ActionData
+from .turn_data import TurnData, BoardcastActionData
 from .action_display import ActionDisplay
 
 
@@ -36,9 +36,8 @@ class GameManager():
         self.run_game()
 
     def run_game(self):
-
-        self.subscribe()
         self._generate_character_for_all_players()
+        self.subscribe()
         self.process_turn()
 
     def subscribe(self):
@@ -78,7 +77,7 @@ class GameManager():
             self._cards_pool[i] = 3
 
     def player_selected_action(self, player_action_type, player_type):
-        self.event_queue.notify(ActionData(
+        self.event_queue.boardcast(BoardcastActionData(
             ActionType.PENDING_ACTION, player_action_type, self.current_player))
         return "hah"
         # self.end_turn()
@@ -86,7 +85,8 @@ class GameManager():
     def end_turn(self):
         self.current_player_index += 1
         self.process_turn()
-
+    def handle_boardcast_action_event(self,data):
+        pass
     def handle_event(self, data):
         pass
         # match data.action_type:

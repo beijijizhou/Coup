@@ -1,8 +1,11 @@
-# from .game_characters.duke import Duke
+from enum import Enum
 
-# character_classes = {
-#     "Duke": Duke,
-# }
+class CharacterColor(Enum):
+    Contessa = "red"
+    Duke = "purple"
+    Captain = "blue"
+    Ambassador = "green"
+    Assassin = "black"
 class Character():
     character_candiates = ["Contessa","Duke", "Captain", "Ambassador", "Assassin"]
     character_color = ["red", "purple", "blue","green","black"]
@@ -18,6 +21,9 @@ class Character():
         #         self.character_instances[self.name] = character_class(self.name)
     def action(self, coins):
         pass
-    
+
+ 
+
+
         
             

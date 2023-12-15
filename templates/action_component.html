@@ -4,7 +4,8 @@
   <h1>Character Action</h1>
     {% for key, value in game_manager.action_display.character_action_details.items() %}
       <div class="character-action">
-        <h3>{{ key }}</h3>
+        <h2 style="background-color:{{ CharacterColor[key].value }}">{{ key }}</h2>
+        
         <form action="/" method="post">
           <button type="submit" name="action_type" value="{{ key }}">Select</button>
         </form>

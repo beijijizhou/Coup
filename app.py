@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from game_assets.in_game_type import TargetType, CharacterType
+from game_assets.in_game_type import TargetType, CharacterType, CharacterColor
 import random
 from game_assets.game_manager import GameManager
 app = Flask(__name__)
@@ -13,7 +13,9 @@ def index():
     global game_manager
     game_manager = GameManager(ai_number + 1)
     return render_template('index.html', game_status=game_status,
-                            ai_number = ai_number, game_manager=game_manager)
+                            ai_number = ai_number, game_manager=game_manager,
+                            CharacterColor = CharacterColor
+                            )
 
 # @app.route('/update_status', methods=['POST'])
 # def update_status():
@@ -50,7 +52,9 @@ def select_character_action():
         game_manager.player_selected_action(action_type)
         
     return render_template('index.html', game_status=game_status,
-                            ai_number = ai_number, game_manager=game_manager)
+                            ai_number = ai_number, game_manager=game_manager,
+                            CharacterColor = CharacterColor
+                            )
 
 
 def select_ai_action_type():

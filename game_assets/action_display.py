@@ -7,6 +7,7 @@ class ActionDisplay():
   
     def __init__(self):
         self.character_action_details = {}
+        self.character_color_details = {}
         self._show_all_actions()
         self.shown = True
     def _show_all_actions(self):
@@ -15,6 +16,7 @@ class ActionDisplay():
         
     def _show_character_actions(self):
         for character in CharacterType:
+            # self.character_color_details[character.name] = CharacterType[]
             self.character_action_details[character.name] = character.value
         # print(self.character_action_details)
 

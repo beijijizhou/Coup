@@ -26,3 +26,9 @@ class CharacterType(Enum):
     AMBASSADOR = "Ambassador - Exchange\nExchange cards with the Court. First take 2 random cards from the Court deck. Choose which, if any, to exchange with your face-down cards. Then return two cards to the Court deck."
 
     
+class CharacterColor(Enum):
+    CONTESSA = "red"
+    DUKE = "purple"
+    CAPTAIN = "blue"
+    AMBASSADOR = "green"
+    ASSASSIN = "black"

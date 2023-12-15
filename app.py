@@ -52,8 +52,8 @@ def select_character_action():
         game_manager.player_selected_action(action_type)
         
     return render_template('index.html', game_status=game_status,
-                            ai_number = ai_number, game_manager=game_manager,
-                            CharacterColor = CharacterColor
+                            ai_number=ai_number, game_manager=game_manager,
+                            CharacterColor=CharacterColor
                             )
 
 

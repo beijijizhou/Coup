@@ -13,7 +13,7 @@ class GameManager():
     _CARDS_NUMBER = 5
     _allowed_player_number = 6
     _current_player_number = 0
-    current_player_index = 0
+    current_player_index = 1
     current_player_name = ""
 
     event_queue = None
@@ -79,6 +79,7 @@ class GameManager():
     def player_selected_action(self, player_action_type):
         self.event_queue.notify(ActionData(ActionType.PENDING_ACTION, player_action_type,
         self.current_player_index, self.current_player_name))
+        print(player_action_type)
         # self.end_turn()
     
     def end_turn(self):

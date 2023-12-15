@@ -1,11 +1,10 @@
 <div>
-  
   {% if game_manager.action_display.shown %}
-  <h1>Character Action</h1>
+    <h1>Character Action</h1>
     {% for key, value in game_manager.action_display.character_action_details.items() %}
       <div class="character-action">
         <h2 style="background-color:{{ CharacterColor[key].value }}">{{ key }}</h2>
-        
+
         <form action="/" method="post">
           <button type="submit" name="action_type" value="{{ key }}">Select</button>
         </form>
@@ -13,12 +12,5 @@
       <p>{{ value }}</p>
     {% endfor %}
   {% endif %}
-  
 </div>
-
-<div>
-  <!--  {% for key, value in game_manager.action_display.character_action_details.items() %}
-        <h1> {{key}} </h1>
-        <p> {{value}} </p>
-    {% endfor %}  -->
-</div>
+<div></div>

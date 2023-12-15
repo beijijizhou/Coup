@@ -4,7 +4,7 @@ from .turn_data import TurnData
 
 class ActionDisplay():
     message = ""
-  
+    
     def __init__(self):
         self.character_action_details = {}
         self.character_color_details = {}
@@ -38,6 +38,6 @@ class ActionDisplay():
                     self.message = (
                         f"{data.name} selected the action \n"
                         f"{data.player_action_type}: {CharacterType[data.player_action_type].value}\n"
-                        
                     )
+                    
                   

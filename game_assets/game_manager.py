@@ -4,6 +4,8 @@ from typing import List
 import random
 from .event_queue import EventQueue
 from .in_game_type import ActionType, CharacterType
+from . import in_game_type
+from .action_board_manager import ActionBoardManager
 from .turn_data import TurnData, ActionData
 from .action_display import ActionDisplay
 class GameManager():
@@ -18,16 +20,17 @@ class GameManager():
 
     event_queue = None
     message = ""
-    
+    in_game_type = in_game_type
 
     def __init__(self, number):
         self._cards_pool = [0] * self._CARDS_NUMBER
         self._players = [None] * number
         self._current_player_number = number
         self._init_cards_pool()
+        
         self.event_queue = EventQueue()
         self.action_display = ActionDisplay()
-        
+        self.action_board_manager = ActionBoardManager()
         self.run_game()
     
     def run_game(self):

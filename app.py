@@ -1,14 +1,15 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 import time
-from game_assets.in_game_type import TargetType, CharacterType, CharacterColor
+from game_assets.in_game_type import TargetType, CharacterType, CharacterColor, CounterActions, ActionBoardState
+import game_assets.in_game_type as in_game_type
 import random
 from game_assets.game_manager import GameManager
+
+
 app = Flask(__name__)
 game_status = "started"
 ai_number = 4
-
 game_manager = None
-
 
 @app.route('/')
 def index():
@@ -16,7 +17,7 @@ def index():
     game_manager = GameManager(ai_number + 1)
     return render_template('index.html', game_status=game_status,
                            ai_number=ai_number, game_manager=game_manager,
-                           CharacterColor=CharacterColor
+                           in_game_type = in_game_type
                            )
 
 # @app.route('/update_status', methods=['POST'])
@@ -51,14 +52,17 @@ def update_ai():
 def select_character_action():
     global game_manager
     if request.method == 'POST':
-        action_type = request.form.get('action_type')
-        if action_type in TargetType.AI.name:
+        player_type = request.form.get('player_type')
+        if player_type == TargetType.AI.name:
             action_type = select_ai_action_type()
-        game_manager.player_selected_action(action_type)
+            game_manager.player_selected_action(action_type)
+
         return jsonify(updated_message=game_manager.action_display.message)
+
     return render_template('index.html', game_status=game_status,
                            ai_number=ai_number, game_manager=game_manager,
-                           CharacterColor=CharacterColor)
+                           in_game_type = in_game_type
+                           )
 
 
 def select_ai_action_type():

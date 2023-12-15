@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="game">
+    {% include 'game_component/players_board.html' %}
+  </div>
+  <div class="gameboard">
+    {% include 'game_component/action_board_component/action_board.html' %}
+    {% include 'game_component/ai_action.html' %}
+  </div>
+  {% include 'game_component/announcer_board.html' %}
+</div>

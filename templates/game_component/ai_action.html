@@ -5,11 +5,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     {% if game_manager.current_player_index > 0 %}
-        function sendAIActionToServer(actionType) {
+        function sendAIActionToServer(player_type) {
             $.ajax({
                 type: 'POST',
                 url: '/',
-                data: { "action_type": actionType },
+                data: { "player_type": player_type },
                 success: function(response) {
                   // Update the content of the gameboard div with the received message
                   document.getElementById('announcer').innerText = response.updated_message;

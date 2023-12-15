@@ -1,0 +1,14 @@
+<div id="counter_action">
+    <h1>Counter Actions</h1>
+    {% for action_name, action_value in in_game_type.CounterActions.__members__.items() %}
+    <li>{{ action_name }}: {{ action_value.value }}</li>
+   
+    <div class="character-action">
+        <form action="/" method="post">
+            <button type="submit" name="action_type" value="{{ action_name }}">Select {{ action_name }}</button>
+        </form>
+    </div>
+    <p>{{ value }}</p>
+    {% endfor %}
+
+</div>

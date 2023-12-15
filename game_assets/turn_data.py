@@ -11,7 +11,7 @@ class TurnData():
         self.target_type = target_type
         self.name = name
 class ActionData():
-    def __init__(self, message_action_type,player_action_type,  index, name ):
+    def __init__(self, message_action_type, player_action_type, index, name ):
         self.message_action_type = message_action_type
         self.index = index
         self.player_action_type = player_action_type

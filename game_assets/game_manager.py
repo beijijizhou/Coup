@@ -79,7 +79,7 @@ class GameManager():
     def player_selected_action(self, player_action_type):
         self.event_queue.notify(ActionData(ActionType.PENDING_ACTION, player_action_type,
         self.current_player_index, self.current_player_name))
-        print(player_action_type)
+        
         # self.end_turn()
     
     def end_turn(self):

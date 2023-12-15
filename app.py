@@ -9,39 +9,43 @@ ai_number = 4
 
 game_manager = None
 
+
 @app.route('/')
 def index():
     global game_manager
     game_manager = GameManager(ai_number + 1)
     return render_template('index.html', game_status=game_status,
-                            ai_number = ai_number, game_manager=game_manager,
-                            CharacterColor = CharacterColor
-                            )
+                           ai_number=ai_number, game_manager=game_manager,
+                           CharacterColor=CharacterColor
+                           )
 
 # @app.route('/update_status', methods=['POST'])
 # def update_status():
 #     global game_status, ai_number
 #     # Change the game status here
 #     if game_status == "pending":
-#         game_status = "started" 
+#         game_status = "started"
 #         game_manager = GameManager(ai_number + 1)
 
 #     else:
 #         game_status = "pending"
-#     return redirect(url_for('index')) 
+#     return redirect(url_for('index'))
+
 
 @app.route('/update_ai', methods=['POST'])
 def update_ai():
     global ai_number
     if request.method == 'POST':
-        action = request.form.get('action')  # Assuming 'action' is the name of the input to determine add or minus
-        
+        # Assuming 'action' is the name of the input to determine add or minus
+        action = request.form.get('action')
+
         if action == 'add' and ai_number < 6:
             ai_number += 1
         elif action == 'minus' and ai_number > 1:
             ai_number -= 1
-        
-    return redirect(url_for('index')) 
+
+    return redirect(url_for('index'))
+
 
 @app.route('/', methods=['POST'])
 def select_character_action():
@@ -50,19 +54,16 @@ def select_character_action():
         action_type = request.form.get('action_type')
         if action_type in TargetType.AI.name:
             action_type = select_ai_action_type()
-        
         game_manager.player_selected_action(action_type)
-        
         return jsonify(updated_message=game_manager.action_display.message)
     return render_template('index.html', game_status=game_status,
-                            ai_number=ai_number, game_manager=game_manager,
-                            CharacterColor=CharacterColor
-                            )
+                           ai_number=ai_number, game_manager=game_manager,
+                           CharacterColor=CharacterColor)
 
 
 def select_ai_action_type():
     target_names = [member.name for member in CharacterType]
-    time.sleep(1)
+    # time.sleep(1)
     return random.choice(target_names)
 
 

@@ -1,6 +1,6 @@
 from .character import Character
 from typing import List
-from .turn_data import TurnData
+from .turn_data import TurnData,ActionData
 from .in_game_type import ActionType
 
 class Player():
@@ -23,8 +23,11 @@ class Player():
         return self._characters
 
     def handle_event(self, data):
-        # match data.message_action_type:
-        #     case ActionType.PENDING_ACTION:
-        #         if(self.index != data.index):
-        pass
+        # print(isinstance(data, ActionType))
+        if isinstance(data, ActionData):
+            match data.message_action_type:
+                case ActionType.PENDING_ACTION:
+                    if(self.index != data.index):
+                        pass
+       
         

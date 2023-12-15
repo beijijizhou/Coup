@@ -24,20 +24,21 @@ class ActionDisplay():
         if self.shown:
             self.shown = False
     def handle_event(self, data):
-        self.shown = data.name[0] == 'P'
-        
-        if isinstance(data, TurnData):
-            match data.action_type:
-                case ActionType.START_TURN:
+        # self.shown = data.name[0] == 'P'
+        pass
+        # current_player = 
+        # if isinstance(data, TurnData):
+        #     match data.action_type:
+        #         case ActionType.START_TURN:
  
-                    self.message = data.name + " starts the turn."
-        else:
+        #             self.message = data.name + " starts the turn."
+        # else:
             
-            match data.message_action_type:
-                case ActionType.PENDING_ACTION:
-                    self.message = (
-                        f"{data.name} selected the action \n"
-                        f"{data.player_action_type}: {CharacterType[data.player_action_type].value}\n"
-                    )
+        #     match data.action_type:
+        #         case ActionType.PENDING_ACTION:
+        #             self.message = (
+        #                 f"{data.name} selected the action \n"
+        #                 f"{data.player_action_type}: {CharacterType[data.player_action_type].value}\n"
+        #             )
                     
                   

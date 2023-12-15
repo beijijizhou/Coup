@@ -24,12 +24,11 @@ class ChallengeActions(Enum):
 
 
 class TargetType(Enum):
-    GAME_MANAGER = 1
-    PARTICIPANT = 2
-    PLAYER = 3
-    AI = 4
-    TREASURY = 5
-    DECK = 6
+    GAME_MANAGER = "game_manager"
+    PLAYER = "player"
+    AI = "ai"
+    TREASURY = "treasury"
+    DECKER = "decker"
 
 
 class CharacterType(Enum):

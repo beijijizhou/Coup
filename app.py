@@ -11,14 +11,12 @@ game_status = "started"
 ai_number = 4
 game_manager = None
 
+
 @app.route('/')
 def index():
     global game_manager
     game_manager = GameManager(ai_number + 1)
-    return render_template('index.html', game_status=game_status,
-                           ai_number=ai_number, game_manager=game_manager,
-                           in_game_type = in_game_type
-                           )
+    return game_templates()
 
 # @app.route('/update_status', methods=['POST'])
 # def update_status():
@@ -53,22 +51,28 @@ def select_character_action():
     global game_manager
     if request.method == 'POST':
         player_type = request.form.get('player_type')
-        if player_type == TargetType.AI.name:
-            action_type = select_ai_action_type()
-            game_manager.player_selected_action(action_type)
-
-        return jsonify(updated_message=game_manager.action_display.message)
-
-    return render_template('index.html', game_status=game_status,
-                           ai_number=ai_number, game_manager=game_manager,
-                           in_game_type = in_game_type
-                           )
+        if player_type == TargetType.AI:
+            player_action_type = select_ai_action_type()
+            game_manager.player_selected_action(player_action_type, TargetType.AI)
+            return jsonify(updated_message=game_manager.action_display.message)
+        else:
+            player_action_type = request.form.get('player_action_type')
+            print( player_action_type)
+            game_manager.player_selected_action(player_action_type, TargetType.PLAYER)
+    return game_templates()
 
 
 def select_ai_action_type():
     target_names = [member.name for member in CharacterType]
     # time.sleep(1)
     return random.choice(target_names)
+
+
+def game_templates():
+    return render_template('index.html', game_status=game_status,
+                           ai_number=ai_number, game_manager=game_manager,
+                           in_game_type=in_game_type
+                           )
 
 
 if __name__ == '__main__':

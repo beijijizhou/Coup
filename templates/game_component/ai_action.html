@@ -10,6 +10,10 @@
                 type: 'POST',
                 url: '/',
                 data: { "action_type": actionType },
+                success: function(response) {
+                  // Update the content of the gameboard div with the received message
+                  document.getElementById('announcer').innerText = response.updated_message;
+                },
                 error: function(error) {
                     console.error('Error:', error);
                 }

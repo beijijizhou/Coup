@@ -20,9 +20,9 @@ class EventQueueStatus(Enum):
 
 
 class GeneralActions(Enum):
-    INCOME = "Income \n Take 1 coin from the Treasury."
-    FOREIGN_AID = "Foreign Aid\n Take 2 coins from the Treasury. (Can be blocked by the Duke)"
-    COUP = "Coup \n Pay 7 coins to the Treasury and launch a Coup against another player. That player immediately loses an influence. A Coup is always successful. If you start your turn with 10 (or more) coins you are required to launch a Coup."
+    INCOME = "Income: Take 1 coin from the Treasury."
+    FOREIGN_AID = "Foreign Aid: Take 2 coins from the Treasury. (Can be blocked by the Duke)"
+    COUP = "Coup: Pay 7 coins to the Treasury and launch a Coup against another player. That player immediately loses an influence. A Coup is always successful. If you start your turn with 10 (or more) coins you are required to launch a Coup."
 
 
 class CounterActions(Enum):
@@ -83,3 +83,4 @@ class GameStatus(Enum):
     IN_GAME = "In game"
     NOT_STARTED = "Click to start"
     WAIT_FOR_HUMAN_COUNTERACT = 3
+

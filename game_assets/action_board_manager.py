@@ -2,14 +2,14 @@ from game_assets.in_game_type import ActionBoardState, CharacterActions, Counter
 
 
 class ActionBoardManager():
-    action_board_state = None
+    state = None
     action_board_details = None
 
     def __init__(self) -> None:
         self.set_action_board(ActionBoardState.PLAYER_TURN)
 
     def set_action_board(self, state) -> None:
-        self.action_board_state = state
+        self.state = state
         match state:
             case ActionBoardState.PLAYER_TURN:
                 self.action_board_details = CharacterActions

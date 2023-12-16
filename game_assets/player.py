@@ -65,7 +65,7 @@ class Player():
                 current_action = self.random_ai_actions(CharacterActions)
             case ActionType.COUNTERACT:
                 # current_action = self.random_ai_actions(CounterActions)
-                current_action = CounterActions.IGNORE
+                current_action = CounterActions.COUNTERACT
             case ActionType.CHALLENGE:
                 current_action = self.random_ai_actions(ChallengeActions)
 

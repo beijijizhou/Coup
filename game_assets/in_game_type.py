@@ -4,7 +4,6 @@ from enum import Enum
 class ActionType(Enum):
     START_TURN = 1
     END_TURN = 2
-
     CHARACTER_ACTION = 3
     GENERAL_ACTION = 4
     CHALLENGE = 5
@@ -12,6 +11,12 @@ class ActionType(Enum):
     NOTIFY = 7
     PENDING_ACTION = 8
     FOREIGN_AID = 9
+
+
+class EventQueueStatus(Enum):
+    IDLE = 1
+    WORKING = 2
+    WAIT_FOR_HUMAN_COUNTERACT = 3
 
 
 class GeneralActions(Enum):
@@ -77,3 +82,4 @@ class GameStatus(Enum):
     WIN = "Congratulations"
     IN_GAME = "In game"
     NOT_STARTED = "Click to start"
+    WAIT_FOR_HUMAN_COUNTERACT = 3

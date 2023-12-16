@@ -2,7 +2,7 @@
     <h1>{{ game_manager.current_player.name }}'s turn</h1>
     <h3>{{ game_manager.current_player.current_action_messages[0] }}</h3>
     {% for player in game_manager.event_queue.other_players %}
-        <h3>{{ player.name }}</h3>
+        <h3>{{ player.name }} </h3>
         {% for message in player.current_action_messages %}
             <h3>{{ message }}</h3>
         {% endfor %}

@@ -3,7 +3,7 @@ from .character import Character
 from typing import List
 import random
 from .event_queue import EventQueue
-from .in_game_type import ActionType, GameStatus, CharacterActions
+from .in_game_type import ActionType, GameStatus, CharacterActions, EventQueueStatus,ActionBoardState
 from . import in_game_type
 from .action_board_manager import ActionBoardManager
 from .turn_data import TurnData, BoardcastActionData
@@ -29,10 +29,10 @@ class GameManager():
         self.players = [None] * number
         self._current_player_number = number
         self.init_cards_pool()
-
+        self.action_board_manager = ActionBoardManager()
         self.event_queue = EventQueue()
         self.announcer = Announcer()
-        self.action_board_manager = ActionBoardManager()
+        
         self.run_game()
 
     def run_game(self):
@@ -77,9 +77,13 @@ class GameManager():
             self._cards_pool[i] = 3
 
     def player_selected_action(self, player_action_type, player_type):
-        self.current_player.set_current_action(CharacterActions[player_action_type])
+        self.current_player.set_current_action(
+            CharacterActions[player_action_type])
         self.event_queue.boardcast(BoardcastActionData(
             ActionType.PENDING_ACTION, player_action_type, player_type, self.current_player))
+        if self.event_queue.status == EventQueueStatus.WAIT_FOR_HUMAN_COUNTERACT:
+            self.action_board_manager.state = ActionBoardState.COUNTER_ACTION
+            return
         # return GameStatus.GAME_OVER
         return self.end_turn()
 
@@ -97,12 +101,12 @@ class GameManager():
             if self.players[i].alive:
                 return GameStatus.IN_GAME
         return GameStatus.WIN
-    
+
     def clear_announcer(self):
         for player in self.event_queue.other_players:
             player.name = ""
             player.current_action_messages = []
-    
+
     def handle_boardcast_action_event(self, data):
         pass
 

@@ -1,21 +1,21 @@
 <div>
-    {% if game_manager.action_board_manager.action_board_state == in_game_type.ActionBoardState.PLAYER_TURN %}
+    {% if game_manager.action_board_manager.state == in_game_type.ActionBoardState.PLAYER_TURN %}
     <!-- Render HTML for PLAYER_TURN -->
     <h1>Player's Turn</h1>
     {% include 'game_component/action_board_component/player_turn.html' %}
 
-{% elif game_manager.action_board_manager.action_board_state == in_game_type.ActionBoardState.COUNTER_ACTION %}
+    {% elif game_manager.action_board_manager.state == in_game_type.ActionBoardState.COUNTER_ACTION %}
     <!-- Render HTML for COUNTER_ACTION -->
     <h1>Counter Action</h1>
     {% include 'game_component/action_board_component/counter_action.html' %}
-{% elif game_manager.action_board_manager.action_board_state == in_game_type.ActionBoardState.CHALLENGE %}
+    {% elif game_manager.action_board_manager.state == in_game_type.ActionBoardState.CHALLENGE %}
     <!-- Render HTML for CHALLENGE -->
     <h1>Challenge</h1>
     {% include 'game_component/action_board_component/challenge.html' %}
 
-{% elif game_manager.action_board_manager.action_board_state == in_game_type.ActionBoardState.OTHER_PLAYER_TURN %}
+    {% elif game_manager.action_board_manager.state == in_game_type.ActionBoardState.OTHER_PLAYER_TURN %}
     <!-- Render HTML for OTHER_PLAYER_TURN -->
     <h1>Other Player's Turn</h1>
     {% include 'game_component/action_board_component/other_player_turn.html' %}
-{% endif %}
+    {% endif %}
 </div>

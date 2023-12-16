@@ -85,7 +85,17 @@ class GameManager():
     def end_turn(self):
         self.current_player_index += 1
         self.process_turn()
-
+        return self.winner()
+    
+    def winner(self):
+        
+        if not self.players[0].alive:
+            return ActionType.GAME_OVER
+        
+        for i in range(1,len(self.players)):
+            if self.players[i].alive:
+               return ActionType.END_TURN
+        return ActionType.WIN
     def handle_boardcast_action_event(self, data):
         pass
 

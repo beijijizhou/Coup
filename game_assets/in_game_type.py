@@ -4,6 +4,7 @@ from enum import Enum
 class ActionType(Enum):
     START_TURN = 1
     END_TURN = 2
+   
     CHARACTER_ACTION = 3
     GENERAL_ACTION = 4
     CHALLENGE = 5
@@ -11,6 +12,8 @@ class ActionType(Enum):
     NOTIFY = 7
     PENDING_ACTION = 8
     FOREIGN_AID = 9
+    GAME_OVER = 10
+    WIN = 11
 class GeneralActions(Enum):
     INCOME = "Income \n Take 1 coin from the Treasury."
     FOREIGN_AID = "Foreign Aid\n Take 2 coins from the Treasury. (Can be blocked by the Duke)"

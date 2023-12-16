@@ -8,7 +8,7 @@ from game_assets.game_manager import GameManager
 
 app = Flask(__name__)
 game_status = "started"
-ai_number = 4
+ai_number = 2
 game_manager = None
 
 

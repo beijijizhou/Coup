@@ -1,4 +1,4 @@
-from game_assets.in_game_type import ActionBoardState, CharacterType, CounterActions, ChallengeActions, OtherPlayerTurn
+from game_assets.in_game_type import ActionBoardState, CharacterActions, CounterActions, ChallengeActions, OtherPlayerTurn
 
 
 class ActionBoardManager():
@@ -12,7 +12,7 @@ class ActionBoardManager():
         self.action_board_state = state
         match state:
             case ActionBoardState.PLAYER_TURN:
-                self.action_board_details = CharacterType
+                self.action_board_details = CharacterActions
             case ActionBoardState.COUNTER_ACTION:
                 self.action_board_details = CounterActions
             case ActionBoardState.CHALLENGE:

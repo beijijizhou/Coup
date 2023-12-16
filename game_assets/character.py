@@ -10,6 +10,7 @@ class Character():
     character_candiates = ["Contessa","Duke", "Captain", "Ambassador", "Assassin"]
     character_color = ["red", "purple", "blue","green","black"]
     character_instances = {}
+    alive = False
     def __init__(self, index):
        
         self._name = self.character_candiates[index]

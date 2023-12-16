@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 import time
-from game_assets.in_game_type import TargetType, CharacterType, CharacterColor, CounterActions, ActionBoardState
+from game_assets.in_game_type import TargetType, CharacterActions, CharacterColor, CounterActions, ActionBoardState
 import game_assets.in_game_type as in_game_type
 import random
 from game_assets.game_manager import GameManager
@@ -53,17 +53,19 @@ def select_character_action():
         player_type = request.form.get('player_type')
         if player_type == TargetType.AI:
             player_action_type = select_ai_action_type()
-            game_manager.player_selected_action(player_action_type, TargetType.AI)
-            return jsonify(updated_message=game_manager.action_display.message)
+            game_manager.player_selected_action(
+                player_action_type, TargetType.AI)
+            return jsonify(updated_message=game_manager.announcer.message)
         else:
             player_action_type = request.form.get('player_action_type')
 
-            game_manager.player_selected_action(player_action_type, TargetType.PLAYER)
+            game_manager.player_selected_action(
+                player_action_type, TargetType.PLAYER)
     return game_templates()
 
 
 def select_ai_action_type():
-    target_names = [member.name for member in CharacterType]
+    target_names = [member.name for member in CharacterActions]
     # time.sleep(1)
     return random.choice(target_names)
 

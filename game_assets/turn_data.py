@@ -10,7 +10,8 @@ class TurnData():
 
 
 class BoardcastActionData():
-    def __init__(self, action_type, player_action_type, current_player):
-        self.action_type = action_type,
-        self.player_action_type = player_action_type,
+    def __init__(self, action_type, player_action_type, player_type, current_player):
+        self.action_type = action_type
+        self.player_action_type = player_action_type
+        self.player_type = player_type
         self.current_player = current_player

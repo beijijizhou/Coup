@@ -1,18 +1,17 @@
 <div>
-  {% if game_manager.action_display.shown %}
-    <h1>Character Action</h1>
-    {% for key, value in game_manager.action_display.character_action_details.items() %}
-      <div class="character-action">
-        <h2 style="background-color:{{ in_game_type.CharacterColor[key].value }}">{{ key }}</h2>
+  {% if game_manager.announcer.shown %}
+  <h1>Character Action</h1>
+  {% for key, value in game_manager.announcer.character_action_details.items() %}
+  <div class="character-action">
+    <h2 style="background-color:{{ in_game_type.CharacterColor[key].value }}">{{ key }}</h2>
 
-        <form action="/" method="post">
-          <button type="submit" name="player_action_type" value="{{ key }}">Select</button>
-        </form>
-      </div>
-      <p>{{ value }}</p>
-    {% endfor %}
-    
+    <form action="/" method="post">
+      <button type="submit" name="player_action_type" value="{{ key }}">Select</button>
+    </form>
+  </div>
+  <p>{{ value }}</p>
+  {% endfor %}
+
   {% endif %}
-  
-</div>
 
+</div>

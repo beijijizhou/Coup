@@ -1,14 +1,14 @@
 {% for player in game_manager.players %}
-  <div class="gameboard">
-    <div class="playerstats">
-      <div>{{ player.name }}</div>
-      <div class="circle">{{ player.coins }}</div>
-    </div>
-    <div>
-      {% for character in player.get_characters() %}
-        <!-- <h6>{{character._color}}</h6> -->
-        <h2 style="background-color:{{ character._color }}">{{ character._name }}</h2>
-      {% endfor %}
-    </div>
+<div class="gameboard">
+  <div class="playerstats">
+    <div>{{ player.name }}</div>
+    <div class="circle">{{ player.coins }}</div>
   </div>
+  <div>
+    {% for character in player.characters %}
+    <!-- <h6>{{character._color}}</h6> -->
+    <h2 style="background-color:{{ character._color }}">{{ character._name }}</h2>
+    {% endfor %}
+  </div>
+</div>
 {% endfor %}

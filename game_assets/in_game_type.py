@@ -10,8 +10,12 @@ class ActionType(Enum):
     COUNTERACT = 6
     NOTIFY = 7
     PENDING_ACTION = 8
-
-
+    FOREIGN_AID = 9
+class GeneralActions(Enum):
+    INCOME = "Income \n Take 1 coin from the Treasury."
+    FOREIGN_AID = "Foreign Aid\n Take 2 coins from the Treasury. (Can be blocked by the Duke)"
+    COUP = "Coup \n Pay 7 coins to the Treasury and launch a Coup against another player. That player immediately loses an influence. A Coup is always successful. If you start your turn with 10 (or more) coins you are required to launch a Coup."
+    
 class CounterActions(Enum):
     COUNTERACT = "Deny current player's action"
     CHALLENGE = "Challenge current player"
@@ -31,7 +35,7 @@ class TargetType(Enum):
     DECKER = "decker"
 
 
-class CharacterType(Enum):
+class CharacterActions(Enum):
     DUKE = "Duke - Tax\nTake 3 coins from the Treasury."
     ASSASSIN = "Assassin - Assassinate\nPay 3 coins to the Treasury and launch an assassination against another player. If successful that player immediately loses an influence. (Can be blocked by the Contessa)"
     CAPTAIN = "Captain - Steal\nTake 2 coins from another player. If they only have one coin, take only one. (Can be blocked by the Ambassador or the Captain)"
@@ -52,5 +56,15 @@ class ActionBoardState(Enum):
     CHALLENGE = 3
     OTHER_PLAYER_TURN = 4
 
+
 class OtherPlayerTurn(Enum):
     Message = "Wait for action"
+class CounterRelation(Enum):
+    ASSASSIN = "CONTESSA"
+    AMBASSADOR = "CAPTAIN"
+    CAPTAIN = "CAPTAIN"
+    DUKE = "FOREIGN_AID"
+    
+    
+    
+    

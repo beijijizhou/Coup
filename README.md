@@ -1,14 +1,11 @@
 # Coup
-**install virtual environment**<br />
+**Set up instruction**<br />
 pip3 install virtualenv<br />
-virtualenv env<br />
-
-**enable virtual environment and install flask library instuction**<br />
-source env/bin/activate<br />
 pip3 install flask<br />
+virtualenv env<br />
+source env/bin/activate<br />
+flask --app app.py --debug run<br />
 
-**start game**<br />
-python3 app.py<br />
 
 **sUX instruction**<br />
 There will be one human player and there will be at least one AI player.<br />

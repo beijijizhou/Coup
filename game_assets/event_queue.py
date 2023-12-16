@@ -1,8 +1,8 @@
 from .turn_data import BoardcastActionData
 from typing import List
 from .player import Player
-from .in_game_type import CounterActions, ActionType, TargetType, EventQueueStatus
-
+from .in_game_type import CounterActions, ActionBoardState, TargetType, EventQueueStatus
+from .action_board_manager import ActionBoardManager
 
 class EventQueue():
     _instance = None
@@ -12,13 +12,13 @@ class EventQueue():
     #         cls._instance.subscribers = []  # Initialize the subscribers list
     #     return cls._instance
 
-    def __init__(self) -> None:
+    def __init__(self,action_board_manager : ActionBoardManager) -> None:
         self.subscribers: List[Player] = []
         self.current_player: Player
         self.current_responding_player: Player
         self.other_players: List[Player] = []
         self.status = EventQueueStatus.WORKING
-
+        self.action_board_manager = action_board_manager
     def subscribe(self, subscriber):
         self.subscribers.append(subscriber)
 
@@ -35,7 +35,7 @@ class EventQueue():
                 data)
 
             self.other_players.append(self.responding_player)
-
+            self.handle_boardcast_current_action()
             if not self.current_player.alive or self.status == EventQueueStatus.WAIT_FOR_HUMAN_COUNTERACT:
                 return
             next_index = self.select_subscriber_index(next_index)
@@ -46,7 +46,7 @@ class EventQueue():
             case CounterActions.COUNTERACT:
                 self.send_counteract_event()
                 if self.current_player.player_type == TargetType.PLAYER:
-                    self.status = EventQueueStatus.WAIT_FOR_HUMAN_COUNTERACT
+                    self.action_board_manager.set_action_board(ActionBoardState.CHALLENGE)
                     return
             case CounterActions.CHALLENGE:
                 self.handle_challenge_event()

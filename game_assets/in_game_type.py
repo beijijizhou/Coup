@@ -26,7 +26,7 @@ class GeneralActions(Enum):
 
 
 class CounterActions(Enum):
-    COUNTERACT = "Deny current player's action"
+    COUNTERACT = "Counteract current player's action"
     CHALLENGE = "Challenge current player"
     IGNORE = "Permit current player's action"
 

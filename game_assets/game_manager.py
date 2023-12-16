@@ -30,7 +30,7 @@ class GameManager():
         self._current_player_number = number
         self.init_cards_pool()
         self.action_board_manager = ActionBoardManager()
-        self.event_queue = EventQueue()
+        self.event_queue = EventQueue(self.action_board_manager)
         self.announcer = Announcer()
         
         self.run_game()

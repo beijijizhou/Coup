@@ -3,7 +3,7 @@ from .character import Character
 from typing import List
 import random
 from .event_queue import EventQueue
-from .in_game_type import ActionType, CharacterActions
+from .in_game_type import ActionType, GameStatus
 from . import in_game_type
 from .action_board_manager import ActionBoardManager
 from .turn_data import TurnData, BoardcastActionData
@@ -79,23 +79,24 @@ class GameManager():
     def player_selected_action(self, player_action_type, player_type):
         self.event_queue.boardcast(BoardcastActionData(
             ActionType.PENDING_ACTION, player_action_type, player_type, self.current_player))
-        return "hah"
-        # self.end_turn()
+        self.end_turn()
+        # return self.end_turn()
 
     def end_turn(self):
-        self.current_player_index += 1
-        self.process_turn()
-        return self.winner()
-    
+        # self.current_player_index += 1
+        # self.process_turn()
+        print(self.winner())
+
     def winner(self):
-        
+
         if not self.players[0].alive:
-            return ActionType.GAME_OVER
-        
-        for i in range(1,len(self.players)):
+            return GameStatus.GAME_OVER
+
+        for i in range(1, len(self.players)):
             if self.players[i].alive:
-               return ActionType.END_TURN
-        return ActionType.WIN
+                return GameStatus.IN_GAME
+        return GameStatus.WIN
+
     def handle_boardcast_action_event(self, data):
         pass
 

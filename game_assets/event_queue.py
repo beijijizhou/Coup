@@ -33,8 +33,8 @@ class EventQueue():
                 data)
             self.other_players.append(self.responding_player)
             self.handle_boardcast_current_action()
-            if(not self.current_player.alive):
-                return 
+            # if(not self.current_player.alive):
+            #     return 
             next_index = self.select_subscriber_index(next_index)
         
     def handle_boardcast_current_action(self):

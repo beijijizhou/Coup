@@ -1,13 +1,13 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 import time
-from game_assets.in_game_type import TargetType, CharacterActions, CharacterColor, CounterActions, ActionBoardState
+from game_assets.in_game_type import TargetType, CharacterActions, ActionType, GameStatus
 import game_assets.in_game_type as in_game_type
 import random
 from game_assets.game_manager import GameManager
 
 
 app = Flask(__name__)
-game_status = "started"
+
 ai_number = 2
 game_manager = None
 
@@ -53,15 +53,25 @@ def select_character_action():
         player_type = request.form.get('player_type')
         if player_type == TargetType.AI:
             player_action_type = select_ai_action_type()
-            game_manager.player_selected_action(
+            game_status = game_manager.player_selected_action(
                 player_action_type, TargetType.AI)
             return jsonify(updated_message=game_manager.announcer.message)
         else:
             player_action_type = request.form.get('player_action_type')
-
-            game_manager.player_selected_action(
+            game_status = game_manager.player_selected_action(
                 player_action_type, TargetType.PLAYER)
+            
     return game_templates()
+
+
+def check_game_status(game_status):
+    # print(game_status)
+    if game_status == GameStatus.IN_GAME:
+        print("game_status")
+        return game_templates()
+    # else:
+        
+    #     return render_template('index.html', game_result=game_status, in_game_type=in_game_type)
 
 
 def select_ai_action_type():
@@ -71,10 +81,9 @@ def select_ai_action_type():
 
 
 def game_templates():
-    return render_template('index.html', game_status=game_status,
+    return render_template('index.html', game_status=GameStatus.IN_GAME,
                            ai_number=ai_number, game_manager=game_manager,
-                           in_game_type=in_game_type
-                           )
+                           in_game_type=in_game_type)
 
 
 if __name__ == '__main__':

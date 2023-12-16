@@ -4,7 +4,7 @@ from enum import Enum
 class ActionType(Enum):
     START_TURN = 1
     END_TURN = 2
-   
+
     CHARACTER_ACTION = 3
     GENERAL_ACTION = 4
     CHALLENGE = 5
@@ -12,13 +12,14 @@ class ActionType(Enum):
     NOTIFY = 7
     PENDING_ACTION = 8
     FOREIGN_AID = 9
-    GAME_OVER = 10
-    WIN = 11
+
+
 class GeneralActions(Enum):
     INCOME = "Income \n Take 1 coin from the Treasury."
     FOREIGN_AID = "Foreign Aid\n Take 2 coins from the Treasury. (Can be blocked by the Duke)"
     COUP = "Coup \n Pay 7 coins to the Treasury and launch a Coup against another player. That player immediately loses an influence. A Coup is always successful. If you start your turn with 10 (or more) coins you are required to launch a Coup."
-    
+
+
 class CounterActions(Enum):
     COUNTERACT = "Deny current player's action"
     CHALLENGE = "Challenge current player"
@@ -62,12 +63,17 @@ class ActionBoardState(Enum):
 
 class OtherPlayerTurn(Enum):
     Message = "Wait for action"
+
+
 class CounterRelation(Enum):
     ASSASSIN = "CONTESSA"
     AMBASSADOR = "CAPTAIN"
     CAPTAIN = "CAPTAIN"
     DUKE = "FOREIGN_AID"
-    
-    
-    
-    
+
+
+class GameStatus(Enum):
+    GAME_OVER = 1
+    WIN = 2
+    IN_GAME = "In game"
+    NOT_STARTED = "Click to start"

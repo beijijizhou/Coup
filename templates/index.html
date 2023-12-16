@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to the Coup Game {% endblock %}</h1>
-    <p>Game Status: {{ game_status }}</p>
-    <h1>AI Number: {{ ai_number }}</h1>
-    <form action="/update_ai" method="post">
-        <button type="submit" name="action" value="add">Add AI</button>
-        <button type="submit" name="action" value="minus">Minus AI</button>
-    </form>
+<h1>{% block title %} Welcome to the Coup Game {% endblock %}</h1>
+<p>Game Status: {{ game_status.value }}</p>
+<h1>AI Number: {{ ai_number }}</h1>
+<h1></h1>
+<form action="/update_ai" method="post">
+    <button type="submit" name="action" value="add">Add AI</button>
+    <button type="submit" name="action" value="minus">Minus AI</button>
+</form>
 
-    <form action="/update_status" method="post">
-        <input type="submit" value="Start the Game">
-    </form>
-    {% if game_status == "started" %}
-    {% set ai_number = ai_number %}
+<form action="/update_status" method="post">
+    <input type="submit" value="Start the Game">
+</form>
+{% if game_status == in_game_type.GameStatus.IN_GAME %}
+{% set ai_number = ai_number %}
 
-    {% include 'game_component/game_boards.html'  %}
+{% include 'game_component/game_boards.html' %}
 
-    {% endif %}
-   
+{% endif %}
+
 {% endblock %}

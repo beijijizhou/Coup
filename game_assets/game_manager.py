@@ -3,7 +3,7 @@ from .character import Character
 from typing import List
 import random
 from .event_queue import EventQueue
-from .in_game_type import ActionType, GameStatus
+from .in_game_type import ActionType, GameStatus, CharacterActions
 from . import in_game_type
 from .action_board_manager import ActionBoardManager
 from .turn_data import TurnData, BoardcastActionData
@@ -77,6 +77,7 @@ class GameManager():
             self._cards_pool[i] = 3
 
     def player_selected_action(self, player_action_type, player_type):
+        self.current_player.set_current_action(CharacterActions[player_action_type])
         self.event_queue.boardcast(BoardcastActionData(
             ActionType.PENDING_ACTION, player_action_type, player_type, self.current_player))
         # return GameStatus.GAME_OVER

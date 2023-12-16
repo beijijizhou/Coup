@@ -65,15 +65,14 @@ class Player():
                 current_action = self.random_ai_actions(CharacterActions)
             case ActionType.COUNTERACT:
                 # current_action = self.random_ai_actions(CounterActions)
-                current_action = CounterActions.CHALLENGE
+                current_action = CounterActions.IGNORE
             case ActionType.CHALLENGE:
                 current_action = self.random_ai_actions(ChallengeActions)
 
         return self.set_current_action(current_action)
 
     def set_current_action(self, current_action):
-        new_message = self.player_type.value + "      " + \
-            str(self.index) + " decides to " + str(current_action.value) + "\n"
+        new_message = self.name + " decides to " + str(current_action.value) + "\n"
         
         self.current_action_messages.append(new_message)
         

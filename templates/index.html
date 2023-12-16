@@ -10,8 +10,8 @@
     <button type="submit" name="action" value="minus">Minus AI</button>
 </form>
 
-<form action="/update_status" method="post">
-    <input type="submit" value="Start the Game">
+<form action="/" method="post">
+    <input type="submit" name="start" value = "Start the game">
 </form>
 {% if game_status == in_game_type.GameStatus.IN_GAME %}
 {% set ai_number = ai_number %}

@@ -73,7 +73,7 @@ class CounterRelation(Enum):
 
 
 class GameStatus(Enum):
-    GAME_OVER = 1
-    WIN = 2
+    GAME_OVER = "You lose the game, try again"
+    WIN = "Congratulations"
     IN_GAME = "In game"
     NOT_STARTED = "Click to start"

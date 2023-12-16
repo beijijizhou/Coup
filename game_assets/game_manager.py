@@ -79,13 +79,13 @@ class GameManager():
     def player_selected_action(self, player_action_type, player_type):
         self.event_queue.boardcast(BoardcastActionData(
             ActionType.PENDING_ACTION, player_action_type, player_type, self.current_player))
-        self.end_turn()
-        # return self.end_turn()
+        # return GameStatus.GAME_OVER
+        return self.end_turn()
 
     def end_turn(self):
         # self.current_player_index += 1
         # self.process_turn()
-        print(self.winner())
+        return self.winner()
 
     def winner(self):
 
@@ -96,7 +96,12 @@ class GameManager():
             if self.players[i].alive:
                 return GameStatus.IN_GAME
         return GameStatus.WIN
-
+    
+    def clear_announcer(self):
+        for player in self.event_queue.other_players:
+            player.name = ""
+            player.current_action_messages = []
+    
     def handle_boardcast_action_event(self, data):
         pass
 

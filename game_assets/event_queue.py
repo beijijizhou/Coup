@@ -6,17 +6,16 @@ from .in_game_type import CounterActions, ActionType
 
 class EventQueue():
     _instance = None
-    subscribers: List[Player] = []
-    current_player: Player
-    current_responding_player: Player
-    other_players: List[Player] = []
-
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            cls._instance.subscribers = []  # Initialize the subscribers list
-        return cls._instance
-
+    # def __new__(cls):
+    #     if cls._instance is None:
+    #         cls._instance = super().__new__(cls)
+    #         cls._instance.subscribers = []  # Initialize the subscribers list
+    #     return cls._instance
+    def __init__(self) -> None:
+        self.subscribers: List[Player] = []
+        self.current_player: Player
+        self.current_responding_player: Player
+        self.other_players: List[Player] = []
     def subscribe(self, subscriber):
         self.subscribers.append(subscriber)
 
@@ -31,10 +30,11 @@ class EventQueue():
         while next_index != current_index:
             self.responding_player = self.subscribers[next_index].handle_boardcast_action_event(
                 data)
+            
             self.other_players.append(self.responding_player)
             self.handle_boardcast_current_action()
-            # if(not self.current_player.alive):
-            #     return 
+            if(not self.current_player.alive):
+                return 
             next_index = self.select_subscriber_index(next_index)
         
     def handle_boardcast_current_action(self):

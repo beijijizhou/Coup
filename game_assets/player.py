@@ -40,12 +40,12 @@ class Player():
         else:
             self.current_action_messages.append(self.name + " lost the challenge and one influence") 
 
-        # if not result:
-        #     if(self.influence <= 1):
-        #         self.characters[self.influence].alive = False
-        #         self.influence += 1
-        #     if self.influence == 2:
-        #         self.alive = False
+        if not result:
+            if(self.influence <= 1):
+                self.characters[self.influence].alive = False
+                self.influence += 1
+            if self.influence == 2:
+                self.alive = False
 
     def handle_event(self, data):
         pass

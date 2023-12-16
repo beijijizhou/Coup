@@ -1,7 +1,7 @@
 <div>
   {% if game_manager.announcer.shown %}
   <h1>Character Action</h1>
-  {% for key, value in game_manager.announcer.character_action_details.items() %}
+  {% for key, value in in_game_type.CharacterActions.__members__.items() %}
   <div class="character-action">
     <h2 style="background-color:{{ in_game_type.CharacterColor[key].value }}">{{ key }}</h2>
 

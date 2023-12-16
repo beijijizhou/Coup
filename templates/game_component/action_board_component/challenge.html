@@ -1,9 +1,9 @@
-{% for action_name, action_value in in_game_type.ChallengeActions.__members__.items() %}
-<li>{{ action_name }}: {{ action_value.value }}</li>
+{% for key, action_value in in_game_type.ChallengeActions.__members__.items() %}
+<li>{{ key }}: {{ action_value.value }}</li>
 
 <div class="character-action">
     <form action="/" method="post">
-        <button type="submit" name="action_type" value="{{ action_name }}">Select {{ action_name }}</button>
+        <button type="submit" name="action_type" value="{{ key }}">Select {{ key }}</button>
     </form>
 </div>
 <p>{{ value }}</p>

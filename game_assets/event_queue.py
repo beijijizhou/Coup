@@ -33,7 +33,6 @@ class EventQueue():
         while next_index != current_index:
             self.responding_player = self.subscribers[next_index].handle_boardcast_action_event(
                 data)
-
             self.other_players.append(self.responding_player)
             self.handle_boardcast_current_action()
             if not self.current_player.alive or self.status == EventQueueStatus.WAIT_FOR_HUMAN_COUNTERACT:
@@ -41,7 +40,6 @@ class EventQueue():
             next_index = self.select_subscriber_index(next_index)
 
     def handle_boardcast_current_action(self):
-
         match self.responding_player.current_action:
             case CounterActions.COUNTERACT:
                 self.send_counteract_event()
@@ -50,7 +48,6 @@ class EventQueue():
                     return
             case CounterActions.CHALLENGE:
                 self.handle_challenge_event()
-
         return
 
     def send_counteract_event(self):

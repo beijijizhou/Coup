@@ -32,7 +32,6 @@ class GameManager():
         self.action_board_manager = ActionBoardManager()
         self.event_queue = EventQueue(self.action_board_manager)
         self.announcer = Announcer()
-        
         self.run_game()
 
     def run_game(self):
@@ -77,8 +76,9 @@ class GameManager():
             self._cards_pool[i] = 3
 
     def player_selected_action(self, player_action_type, player_type):
-        self.current_player.set_current_action(
-            CharacterActions[player_action_type])
+        # self.current_player.set_current_action(
+        #     player_action_type)
+        print(player_action_type)
         self.event_queue.boardcast(BoardcastActionData(
             ActionType.PENDING_ACTION, player_action_type, player_type, self.current_player))
         if self.event_queue.status == EventQueueStatus.WAIT_FOR_HUMAN_COUNTERACT:
